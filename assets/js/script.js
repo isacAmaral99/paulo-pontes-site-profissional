@@ -38,7 +38,7 @@ if (navToggle && navMenu) {
     });
 }
 
-// Form submission
+// Form submission with WhatsApp integration
 const contactForm = document.querySelector('.form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
@@ -61,20 +61,43 @@ if (contactForm) {
             return;
         }
         
+        // Create WhatsApp message
+        const whatsappMessage = `
+*Nova Solicitação de Consultoria*
+
+*Nome:* ${data.nome}
+*Telefone:* ${data.telefone}
+*E-mail:* ${data.email}
+*Serviço de Interesse:* ${data.servico || 'Não especificado'}
+*Mensagem:* ${data.mensagem || 'Não informada'}
+
+Enviado através do site paulopontes.com.br
+        `.trim();
+        
+        // WhatsApp number (replace with Paulo's actual number)
+        const whatsappNumber = '5511999999999'; // Format: country code + area code + number
+        
+        // Create WhatsApp URL
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        
         // Show success message
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecionando...';
         submitBtn.disabled = true;
         
-        // Simulate form submission
+        // Redirect to WhatsApp after a short delay
         setTimeout(() => {
-            alert('Mensagem enviada com sucesso! Entrarei em contato em até 24 horas.');
+            window.open(whatsappURL, '_blank');
+            
+            // Reset form and button
             this.reset();
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-        }, 2000);
+            
+            alert('Redirecionando para o WhatsApp! Se não abrir automaticamente, clique no link que apareceu.');
+        }, 1500);
     });
 }
 
