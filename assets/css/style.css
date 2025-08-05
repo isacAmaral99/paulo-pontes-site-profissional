@@ -1009,70 +1009,69 @@ body {
 
 
 
-/* Affiliations Section - Novo Design */
-.affiliations {
-    padding: var(--spacing-3xl) 0;
-    background: var(--bg-primary);
-}
-
+/* Afiliações Section - Novo Design */
 .affiliations-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
 }
 
 .affiliation-card {
-    background: var(--bg-primary);
-    border-radius: 24px;
+    background: var(--bg-white);
+    border-radius: 20px;
+    padding: var(--spacing-xl);
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border-light);
-    overflow: hidden;
     transition: var(--transition);
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .affiliation-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
     box-shadow: var(--shadow-xl);
-    border-color: var(--primary-color);
-}
-
-.affiliation-header {
-    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-accent));
-    padding: var(--spacing-xl);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--border-light);
-    position: relative;
+    border-color: var(--accent-color);
 }
 
 .affiliation-logo {
-    height: 60px;
+    width: 120px;
+    height: 120px;
+    margin-bottom: var(--spacing-lg);
     display: flex;
     align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border-radius: 15px;
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-light);
+}
+
+/* Fundo escuro para ambos os logos (Portfel e Grupo Primo) */
+.affiliation-card .affiliation-logo {
+    background: #1a1a1a;
+    border: 2px solid #333;
 }
 
 .affiliation-logo img {
+    max-width: 100%;
     max-height: 100%;
-    max-width: 200px;
     object-fit: contain;
-    filter: brightness(1.1);
+    object-position: center;
+    filter: brightness(1.1) contrast(1.1);
+    transition: var(--transition);
 }
 
-.affiliation-badge {
-    background: var(--primary-color);
-    color: var(--text-white);
-    padding: var(--spacing-xs) var(--spacing-md);
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.affiliation-card:hover .affiliation-logo img {
+    filter: brightness(1.2) contrast(1.2);
+    transform: scale(1.05);
 }
 
 .affiliation-content {
-    padding: var(--spacing-xl);
+    text-align: center;
+    width: 100%;
 }
 
 .affiliation-content h3 {
@@ -1080,65 +1079,42 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-dark);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
 }
 
 .affiliation-content p {
     color: var(--text-medium);
     line-height: 1.6;
-    margin-bottom: var(--spacing-lg);
-}
-
-.affiliation-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
-    padding: var(--spacing-md);
-    background: var(--bg-secondary);
-    border-radius: 12px;
-}
-
-.stat-item {
+    margin-bottom: var(--spacing-md);
     text-align: center;
 }
 
-.stat-number {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-xs);
-}
-
-.stat-label {
-    font-size: 0.75rem;
-    color: var(--text-medium);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
 .affiliation-benefits {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
+    text-align: left;
+    max-width: 300px;
+    margin: 0 auto;
 }
 
-.benefit-item {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+.affiliation-benefits ul {
+    list-style: none;
+    padding: 0;
+}
+
+.affiliation-benefits li {
     color: var(--text-medium);
-    font-size: 0.9rem;
-    padding: var(--spacing-xs);
+    padding: var(--spacing-xs) 0;
+    position: relative;
+    padding-left: var(--spacing-md);
+    text-align: left;
 }
 
-.benefit-item i {
-    color: var(--secondary-color);
-    width: 16px;
-    font-size: 1rem;
+.affiliation-benefits li:before {
+    content: "✓";
+    color: var(--accent-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
 }
 
 /* Responsividade para afiliações */
@@ -1148,19 +1124,15 @@ body {
         gap: var(--spacing-lg);
     }
     
-    .affiliation-header {
-        flex-direction: column;
-        gap: var(--spacing-md);
-        text-align: center;
+    .affiliation-card {
+        padding: var(--spacing-lg);
     }
     
-    .affiliation-stats {
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--spacing-sm);
+    .affiliation-logo {
+        width: 100px;
+        height: 100px;
     }
 }
-
-
 /* Footer - Design Melhorado */
 .footer {
     background: var(--text-dark);
@@ -1305,4 +1277,3 @@ body {
         gap: var(--spacing-lg);
     }
 }
-
